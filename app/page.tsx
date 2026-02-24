@@ -20,7 +20,7 @@ export default function Home() {
     e.preventDefault();
     const filteredDummyData = dummyData.find((item) => item.name.toLowerCase() === searchItem.toLowerCase());
     setSearchResult(filteredDummyData ? filteredDummyData.name : 'No results found');
-    console.log(searchResult);
+    // test 123 adding update for fetch. (if you see this your amazing!!);
   }
   
   return (
