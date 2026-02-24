@@ -21,6 +21,7 @@ export default function Home() {
     const filteredDummyData = dummyData.find((item) => item.name.toLowerCase() === searchItem.toLowerCase());
     setSearchResult(filteredDummyData ? filteredDummyData.name : 'No results found');
     // test 123 adding update for fetch. (if you see this your amazing!!);
+    // second test just adding a branch (like i said. you are amazing if you see this!!);
   }
   
   return (
