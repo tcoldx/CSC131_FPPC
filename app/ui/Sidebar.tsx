@@ -35,35 +35,35 @@ export default function Sidebar() {
         <nav className=" p-5 flex flex-1 flex-col gap-1 border-b  border-slate-700 ">
           <Link
             href="/"
-            className={` flex items-center gap-3 p-3 rounded-xl ${pathname === "/" ? " text-gray-400 hover:bg-slate-900 hover:text-gray-100 transition" : "border-blue-400 text-blue-400 bg-blue-900"}`}
+            className={` flex items-center gap-3 p-3 rounded-xl ${pathname === "/" ? "border-blue-400 border text-blue-400 bg-blue-900/30" : " text-gray-400 hover:bg-slate-900 hover:text-gray-100 transition"}`}
           >
             <LayoutDashboard className="w-5 h-5" />
             {open && <span>Dashboard</span>}
           </Link>
           <Link
-            href="/"
-            className={` flex items-center gap-3 p-3 rounded-xl ${pathname === "/" ? " text-gray-400 hover:bg-slate-900 hover:text-gray-100 transition" : "border-blue-400 text-blue-400 bg-blue-900"}`}
+            href="/alerts"
+            className={` flex items-center gap-3 p-3 rounded-xl ${pathname === "/alerts" ? "border-blue-400 border text-blue-400 bg-blue-900/30" : "text-gray-400 hover:bg-slate-900 hover:text-gray-100 transition"}`}
           >
             <TriangleAlert className="w-5 h-5" />
             {open && <span>Alerts</span>}
           </Link>
           <Link
-            href="/"
-            className={` flex items-center gap-3 p-3 rounded-xl ${pathname === "/" ? " text-gray-400 hover:bg-slate-900 hover:text-gray-100 transition" : "border-blue-400 text-blue-400 bg-blue-900"}`}
+            href="/officials"
+            className={` flex items-center gap-3 p-3 rounded-xl ${pathname === "/officials" ? "border-blue-400 border text-blue-400 bg-blue-900/30" : "text-gray-400 hover:bg-slate-900 hover:text-gray-100 transition"}`}
           >
             <Users className="w-5 h-5" />
             {open && <span>Officials</span>}
           </Link>
           <Link
-            href="/"
-            className={` flex items-center gap-3 p-3 rounded-xl ${pathname === "/" ? " text-gray-400 hover:bg-slate-900 hover:text-gray-100 transition" : "border-blue-400 text-blue-400 bg-blue-900"}`}
+            href="/data-sources"
+            className={` flex items-center gap-3 p-3 rounded-xl ${pathname === "/data-sources" ? "border-blue-400 border text-blue-400 bg-blue-900/30" : " text-gray-400 hover:bg-slate-900 hover:text-gray-100 transition"}`}
           >
             <Database className="w-5 h-5" />
             {open && <span>Data Soures</span>}
           </Link>
           <Link
-            href="/"
-            className={` flex items-center gap-3 p-3 rounded-xl ${pathname === "/" ? " text-gray-400 hover:bg-slate-900 hover:text-gray-100 transition" : "border-blue-400 text-blue-400 bg-blue-900"}`}
+            href="/settings"
+            className={` flex items-center gap-3 p-3 rounded-xl ${pathname === "/settings" ? "border-blue-400 border text-blue-400 bg-blue-900/30" : " text-gray-400 hover:bg-slate-900 hover:text-gray-100 transition"}`}
           >
             <Settings className="w-5 h-5" />
             {open && <span>Settings</span>}
