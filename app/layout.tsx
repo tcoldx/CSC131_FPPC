@@ -26,16 +26,16 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-      
-      <div className="flex flex-row min-h-screen">
-        <Sidebar />
-        <div className="flex-1 flex flex-col bg-slate-950">
-        <Navbar/>
-        <main className="flex-1 p-6">
-          <div className="">{children}</div>
-        </main>
+        <div className="flex flex-row min-h-screen">
+          <Sidebar />
+
+          <div className="flex-1 flex flex-col bg-slate-950">
+            <Navbar />
+            <main className="flex-1 p-6">
+              <div className="">{children}</div>
+            </main>
+          </div>
         </div>
-      </div>
       </body>
     </html>
   );
