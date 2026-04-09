@@ -25,7 +25,7 @@ export default function Sidebar() {
             <Shield className="size-8 text-blue-400" />
             {open && (
               <div>
-                <div className="font-semibold text-xl ">Ethics Monitor</div>
+                <div className="font-semibold text-xl ">Error404's Ethics Monitor</div>
                 <div className="text-gray-400 text-xs ">Conflict Detection</div>
               </div>
             )}
