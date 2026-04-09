@@ -23,7 +23,7 @@
 # misc
 .DS_Store
 *.pem
-
+/fppc-crawler/
 # debug
 npm-debug.log*
 yarn-debug.log*
