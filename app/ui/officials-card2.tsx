@@ -28,7 +28,7 @@ export default function OfficialsCard2() {
         <div className="flex items-center px-1.5 p-1 gap-2 bg-amber-700/30 border border-amber-600 rounded-sm absolute top-0 right-0">
           {" "}
           <TriangleAlert className=" text-amber-600 size-3" />
-          <span className="text-xs text-amber-600">7</span>
+          <span className="text-xs text-amber-600">4</span>
         </div>
       </div>
       <div className="flex flex-col gap-3">

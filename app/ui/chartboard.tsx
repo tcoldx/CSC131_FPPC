@@ -19,13 +19,17 @@ const data = [
 ];
 
 export default function DashboardChart() {
-    return (
-        <header className="flex-1 min-w-[250px] min-h-[250px] bg-[#0b1120] border border-gray-800 rounded-xl p-6 shadow-md"> 
-            <h1 className="text-lg font-semibold text-white ">Flagged Matches Over Time</h1>
-            <p className="text-gray-400 text-sm mb-4">Number of potential conflicts detected per month</p>
+  return (
+    <header className="flex-1 min-w-[250px] min-h-[250px] bg-[#0b1120] border border-gray-800 rounded-xl p-6 shadow-md">
+      <h1 className="text-lg font-semibold text-white ">
+        Flagged Matches Over Time
+      </h1>
+      <p className="text-gray-400 text-sm mb-4">
+        Number of potential conflicts detected per month
+      </p>
 
-            {/* start of chart container */}
-            <div className="w-full h-64">
+      {/* start of chart container */}
+      <div className="w-full h-64">
         <ResponsiveContainer>
           <LineChart data={data}>
             <CartesianGrid strokeDasharray="3 3" stroke="#1f2937" />
@@ -42,8 +46,6 @@ export default function DashboardChart() {
           </LineChart>
         </ResponsiveContainer>
       </div>
-         </header>
-    );
+    </header>
+  );
 }
-
-

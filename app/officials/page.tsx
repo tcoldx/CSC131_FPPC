@@ -15,7 +15,7 @@ import OfficialsCard5 from "../ui/officials-card5";
 
 export default function OfficialsPage() {
   return (
-    <div className="flex-1 bg-slate-950 h-screen p-10 flex flex-col gap-7">
+    <div className="flex-1 bg-slate-950 h-screen p-2 flex flex-col gap-10">
       <header className="h-16 w-full bg-slate-950 flex items-start flex-col justify-start gap-1">
         <h1 className="text-3xl font-semibold text-gray-300 font ">
           Officials
