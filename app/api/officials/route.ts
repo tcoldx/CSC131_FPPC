@@ -1,13 +1,14 @@
 import { NextResponse } from "next/server";
-import clientPromise from "@/app/lib/mongodb";
+import { getMongoClient } from "@/app/lib/mongodb";
 
 export async function GET() {
   try {
-    const client = await clientPromise;
+    const client = await getMongoClient();
     const db = client.db("Form700");
 
     const officials = await db.collection("Officials").find({}).toArray();
-    return NextResponse.json(officials);
+
+    return NextResponse.json(officials, { status: 200 });
   } catch (error: any) {
     console.error("Error fetching officials:", error);
 
@@ -17,12 +18,6 @@ export async function GET() {
         details: error?.message || "Unknown error",
       },
       { status: 500 }
-    ); 
-   
-  
-  }  
+    );
+  }
 }
-
-
-
-
