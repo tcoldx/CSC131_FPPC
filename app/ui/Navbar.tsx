@@ -1,8 +1,9 @@
 "use client";
-import react from "react";
+import react, {useState} from "react";
 import { Search, Bell, User, Menu } from "lucide-react";
 
 export default function Navbar() {
+    const [dropdownOpen, setDropdownOpen] = useState(false);
     return (
         <header className="h-16 w-full bg-slate-950 border-b border-gray-800 flex items-center justify-between px-6">
       <div className="flex items-center gap-4 flex-1">
@@ -13,10 +14,18 @@ export default function Navbar() {
           <div className="relative">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-gray-400" />
             <input
+            onFocus={() => setDropdownOpen(true)}
+            onBlur={() => setDropdownOpen(false)}
               type="text"
               placeholder="Search officials, alerts, or documents..."
               className="pl-10 bg-[#1a1a24] border-gray-700 text-gray-100 placeholder:text-gray-500 p-1 rounded-md w-full focus:ring-2 focus:ring-gray-500 focus:outline-none"
             />
+            {/* dropdown from search input */}
+            {dropdownOpen && (
+              <div className="absolute top-full left-0 w-full bg-[#1a1a24] border border-gray-700 rounded-md mt-1 p-2 text-sm text-gray-300">
+                Search functionality coming soon!
+              </div>
+            )}
           </div>
         </div>
         <button className="md:hidden p-2 hover:bg-gray-800 rounded-lg transition-colors">

@@ -9,13 +9,13 @@ import {
 } from "recharts";
 
 const data = [
-  { name: "Sep", value: 12 },
-  { name: "Oct", value: 18 },
-  { name: "Nov", value: 15 },
-  { name: "Dec", value: 22 },
-  { name: "Jan", value: 19 },
-  { name: "Feb", value: 24 },
-  { name: "Mar", value: 28 },
+  { name: "Sep", value: null },
+  { name: "Oct", value: null },
+  { name: "Nov", value: null },
+  { name: "Dec", value: null },
+  { name: "Jan", value: null },
+  { name: "Feb", value: null },
+  { name: "Mar", value: null },
 ];
 
 export default function DashboardChart() {
