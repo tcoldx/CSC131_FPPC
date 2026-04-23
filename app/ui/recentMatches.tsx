@@ -8,41 +8,41 @@ export default function RecentFlaggedMatches() {
     interest: string;
     severity: Severity;
   }> = [
-    {
-      id: "ALR-2024-0891",
-      official: "Tim Duncan",
-      date: "3/14/2026",
-      interest: "Investment in TechCorp Holdings ($50,000 - $100,000)",
-      severity: "HIGH",
-    },
-    {
-      id: "ALR-2024-0889",
-      official: "Tredis Ingram",
-      date: "3/11/2026",
-      interest: "Spouse employed by GreenEnergy Solutions",
-      severity: "HIGH",
-    },
-    {
-      id: "ALR-2024-0887",
-      official: "Victor Lee",
-      date: "3/9/2026",
-      interest: "Real estate holdings in Downtown District",
-      severity: "MEDIUM",
-    },
-    {
-      id: "ALR-2024-0884",
-      official: "Kelly Rowland",
-      date: "3/7/2026",
-      interest: "Board member of Healthcare Providers Alliance",
-      severity: "MEDIUM",
-    },
-    {
-      id: "RAND-2026-0881",
-      official: "Iraj Sabzevari",
-      date: "3/4/2026",
-      interest: "Income from consulting - Urban Development LLC ($10,000+)",
-      severity: "LOW",
-    },
+    // {
+    //   id: "ALR-2024-0891",
+    //   official: "Tim Duncan",
+    //   date: "3/14/2026",
+    //   interest: "Investment in TechCorp Holdings ($50,000 - $100,000)",
+    //   severity: "HIGH",
+    // },
+    // {
+    //   id: "ALR-2024-0889",
+    //   official: "Tredis Ingram",
+    //   date: "3/11/2026",
+    //   interest: "Spouse employed by GreenEnergy Solutions",
+    //   severity: "HIGH",
+    // },
+    // {
+    //   id: "ALR-2024-0887",
+    //   official: "Victor Lee",
+    //   date: "3/9/2026",
+    //   interest: "Real estate holdings in Downtown District",
+    //   severity: "MEDIUM",
+    // },
+    // {
+    //   id: "ALR-2024-0884",
+    //   official: "Kelly Rowland",
+    //   date: "3/7/2026",
+    //   interest: "Board member of Healthcare Providers Alliance",
+    //   severity: "MEDIUM",
+    // },
+    // {
+    //   id: "RAND-2026-0881",
+    //   official: "Iraj Sabzevari",
+    //   date: "3/4/2026",
+    //   interest: "Income from consulting - Urban Development LLC ($10,000+)",
+    //   severity: "LOW",
+    // },
   ];
 
   const severityStyles = {
@@ -92,21 +92,21 @@ export default function RecentFlaggedMatches() {
                   className={index !== matches.length - 1 ? "border-b border-white/10" : ""}
                 >
                   <td className="py-6 pr-6 text-sky-400 font-medium leading-7">
-                    {splitId[0]}-
+                    {splitId[0] ? splitId[0] : "No data results" }-
                     <br />
-                    {splitId[1]}-
+                    {splitId[1] ? splitId[1] : "No data results"}-
                     <br />
-                    {splitId[2]}
+                    {splitId[2] ? splitId[2] : "No data results"}
                   </td>
 
                   <td className="py-6 pr-6 text-white leading-7">
-                    {officialName[0]}
+                    {officialName[0] ? officialName[0] : "No data results"}
                     <br />
-                    {officialName[1]}
+                    {officialName[1] ? officialName[1] : "No data results" }
                   </td>
 
                   <td className="py-6 pr-6 text-gray-200 whitespace-nowrap">
-                    {match.date}
+                    {match.date ? match.date : "No data results"}
                   </td>
 
                   <td className="py-6 pr-6 text-gray-100">{match.interest}</td>
@@ -115,7 +115,7 @@ export default function RecentFlaggedMatches() {
                     <span
                       className={`inline-flex items-center rounded-md px-3 py-1 text-xs font-semibold ring-1 ring-inset ${severityStyles[match.severity]}`}
                     >
-                      {match.severity}
+                      {match.severity ? match.severity : "N/A"}
                     </span>
                   </td>
                 </tr>
