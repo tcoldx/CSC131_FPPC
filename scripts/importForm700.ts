@@ -1,7 +1,8 @@
 import * as XLSX from "xlsx";
 
-async function importForm700() {
+async function importForm700() { 
   const workbook = XLSX.readFile("data/form700.xlsx");
+
 
   const sheetName = workbook.SheetNames[0];
   const worksheet = workbook.Sheets[sheetName];
@@ -27,7 +28,7 @@ const rows = XLSX.utils.sheet_to_json<any>(worksheet);
   investmentType: row["NATURE OF INVESTMENT \r\n(Select from drop down list. \r\nIf \"other,\" describe)"],
 })); */
 
-  /*console.log(rows);*/
+  console.log(rows);
 
 for (const row of rows) {
       const response = await fetch("http://localhost:3000/api/form700", {
@@ -42,20 +43,8 @@ for (const row of rows) {
       console.log(result);
     }
 
-  }
-/*const firstRow = rows[0];
 
-const response = await fetch("http://localhost:3000/api/form700", {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json",
-  },
-  body: JSON.stringify(firstRow),
-});
-
-const result = await response.json();
-console.log(result);
-}*/
+}
 
 
 importForm700(); 
