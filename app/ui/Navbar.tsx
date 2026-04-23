@@ -1,9 +1,26 @@
 "use client";
-import react, {useState} from "react";
+import react, {useState, useEffect} from "react";
 import { Search, Bell, User, Menu } from "lucide-react";
 
 export default function Navbar() {
     const [dropdownOpen, setDropdownOpen] = useState(false);
+    useEffect(() => {
+      // Fetch officials data from the API route
+      const fetchOfficials = async () => {
+        try {
+          const response = await fetch("/api/officials");
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          } else {
+            const data = await response.json();
+            console.log("Officials data:", data);
+          }
+        } catch (error) {
+          console.error("Error fetching officials:", error);
+        }
+      }
+      fetchOfficials();
+    }, [])
     return (
         <header className="h-16 w-full bg-slate-950 border-b border-gray-800 flex items-center justify-between px-6">
       <div className="flex items-center gap-4 flex-1">

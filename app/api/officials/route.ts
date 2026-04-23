@@ -7,7 +7,6 @@ export async function GET() {
     const db = client.db("Form700");
 
     const officials = await db.collection("Officials").find({}).toArray();
-
     return NextResponse.json(officials);
   } catch (error: any) {
     console.error("Error fetching officials:", error);

@@ -17,6 +17,7 @@ if (process.env.NODE_ENV === "development") {
   if (!globalWithMongo._mongoClientPromise) {
     client = new MongoClient(uri);
     globalWithMongo._mongoClientPromise = client.connect();
+    console.log("Created new MongoDB client promise");
   }
 
   clientPromise = globalWithMongo._mongoClientPromise;
