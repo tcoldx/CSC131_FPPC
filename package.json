@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@iconify/react": "^6.0.2",
+    "axios": "^1.15.0",
     "bootstrap": "^5.3.8",
     "bootstrap-icons": "^1.13.1",
     "crawlee": "^3.16.0",
