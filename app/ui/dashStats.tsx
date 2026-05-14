@@ -1,6 +1,4 @@
-import react from "react";
-
-export default function DashStats() {
+export default function DashStats() {  
     return (
         <div>
             <div className="flex gap-6 flex-wrap">

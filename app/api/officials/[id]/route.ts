@@ -1,14 +1,16 @@
 import { NextResponse } from "next/server";
 import { getMongoClient } from "@/app/lib/mongodb";
+import { ObjectId } from "mongodb";
 
-export async function GET() {
+
+export async function GET(req: Request, { params }: any) {
   try {
     const client = await getMongoClient();
     const db = client.db("Form700");
-
-    const officials = await db.collection("Officials").find({}).toArray();
+    const {id} = await params;
+    const official = await db.collection("Officials").findOne({_id: new ObjectId(id)});
     
-    return NextResponse.json(officials, { status: 200 });
+    return NextResponse.json(official, { status: 200 });
   } catch (error: any) {
     console.error("Error fetching officials:", error);
 

@@ -1,35 +1,38 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Search, Bell, User, Menu } from "lucide-react";
+import { NavCard } from "./navbarcard";
 
 type RawOfficial = {
   _id: string;
-  ["Last Name"]?: string;
-  ["First Name"]?: string;
-  ["Middle Name"]?: string;
-  ["Agency"]?: string;
-  ["Position"]?: string;
-  ["Work Email Address"]?: string;
-  ["Filing Type"]?: string;
-  ["Filing Year"]?: string;
-  ["Due Date"]?: string;
-  ["Filed Date"]?: string;
-  ["NAME OF BUSINESS ENTITY"]?: string;
+  ["lastName"]?: string;
+  ["firstName"]?: string;
+  ["middleName"]?: string;
+  ["citySlug"]?: string;
+  ["position"]?: string;
+  ["email"]: string;
+  ["filingType"]: string;
+  ["filingYear"]: string;
+  ["businessName"]: string;
+  ["businessDescription"]: string;
+  ["valueRange"]: string;
+  ["investmentType"]: string;
 };
-
+// entire object types defined and needed for prop drilling.
 type Official = {
   _id: string;
   firstName: string;
   lastName: string;
   middleName: string;
-  agency: string;
+  citySlug: string;
   position: string;
-  workEmail: string;
+  email: string;
   filingType: string;
   filingYear: string;
-  dueDate: string;
-  filingDate: string;
-  businessEntityName: string;
+  businessName: string;
+  businessDescription: string;
+  valueRange: string;
+  investmentType: string;
 };
 
 export default function Navbar() {
@@ -37,7 +40,7 @@ export default function Navbar() {
   const [officialData, setOfficialData] = useState<Official[]>([]);
   const [filteredOfficials, setFilteredOfficials] = useState<Official[]>([]);
   const [officialSearch, setOfficialSearch] = useState("");
-
+  const dropdownRef = useRef<any>(null);
   useEffect(() => {
     const fetchOfficials = async () => {
       try {
@@ -48,31 +51,30 @@ export default function Navbar() {
         }
 
         const data: RawOfficial[] = await response.json();
-
         const normalizedData: Official[] = data
           .filter(
             (official) =>
-              official["First Name"]?.trim() && official["Last Name"]?.trim()
+              official["firstName"]?.trim() && official["lastName"]?.trim()
           )
           .map((official) => ({
-            _id: official._id,
-            firstName: official["First Name"] || "",
-            lastName: official["Last Name"] || "",
-            middleName: official["Middle Name"] || "",
-            agency: official["Agency"] || "",
-            position: official["Position"] || "",
-            workEmail: official["Work Email Address"] || "",
-            filingType: official["Filing Type"] || "",
-            filingYear: official["Filing Year"] || "",
-            dueDate: official["Due Date"] || "",
-            filingDate: official["Filed Date"] || "",
-            businessEntityName: official["NAME OF BUSINESS ENTITY"] || "",
+            _id: official._id || "",
+            firstName: official["firstName"] || "",
+            lastName: official["lastName"] || "",
+            middleName: official["middleName"] || "",
+            citySlug: official["citySlug"] || "",
+            position: official.position || "",
+            email: official.email || "",
+            filingType: official.filingType || "",
+            filingYear: official.filingYear || "",
+            businessName: official.businessName || "",
+            businessDescription: official.businessDescription || "",
+            valueRange: official.valueRange || "",
+            investmentType: official.investmentType || " "
           }));
 
         setOfficialData(normalizedData);
         setFilteredOfficials([]);
 
-        console.log("Fetched officials data:", normalizedData);
       } catch (error) {
         console.error("given error from failed response:", error);
       }
@@ -81,13 +83,23 @@ export default function Navbar() {
     fetchOfficials();
   }, []);
 
+  useEffect(() => {
+    function dropTheMenuClick(event: MouseEvent) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setDropdownOpen(false);
+      }
+    }
+      document.addEventListener("mousedown", dropTheMenuClick);
+
+    return () => {
+      document.removeEventListener("mousedown", dropTheMenuClick);
+    }
+  },[])
+
   function onChangeFunction(e: React.ChangeEvent<HTMLInputElement>) {
     const value = e.target.value;
     setOfficialSearch(value);
-
     const search = value.toLowerCase().trim();
-    console.log("User search input:", value);
-
     if (!search) {
       setFilteredOfficials([]);
       return;
@@ -100,8 +112,7 @@ export default function Navbar() {
         official.firstName.toLowerCase().includes(search) ||
         official.lastName.toLowerCase().includes(search) ||
         fullName.includes(search) ||
-        official.position.toLowerCase().includes(search) ||
-        official.agency.toLowerCase().includes(search)
+        official.citySlug.toLowerCase().includes(search)
       );
     });
 
@@ -109,28 +120,26 @@ export default function Navbar() {
   }
 
   return (
-    <header className="h-16 w-full bg-slate-950 border-b border-gray-800 flex items-center justify-between px-6">
+    <header  className="h-16 w-full bg-slate-950 border-b border-gray-800 flex items-center justify-between px-6">
       <div className="flex items-center gap-4 flex-1">
         <button className="lg:hidden p-2 hover:bg-gray-800 rounded-lg transition-colors">
           <Menu className="size-5 text-gray-400" />
         </button>
-
+    {/* the container for the input*/}
         <div className="flex-1 max-w-xl hidden md:block">
-          <div className="relative">
+          <div ref={dropdownRef} className="relative">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-gray-400" />
 
             <input
+          
               value={officialSearch}
               onFocus={() => setDropdownOpen(true)}
-              onBlur={() => {
-                setTimeout(() => setDropdownOpen(false), 150);
-              }}
               onChange={onChangeFunction}
               type="text"
               placeholder="Search officials, alerts, or documents..."
               className="pl-10 bg-[#1a1a24] border border-gray-700 text-gray-100 placeholder:text-gray-500 p-2 rounded-md w-full focus:ring-2 focus:ring-gray-500 focus:outline-none"
             />
-
+          {/* the dropdown menu container */}
             {dropdownOpen && (
               <div className="absolute top-full left-0 w-full bg-[#1a1a24] border border-gray-700 rounded-md mt-1 p-2 text-sm text-gray-300 z-50">
                 <div className="font-semibold mb-2">Search Results</div>
@@ -140,18 +149,7 @@ export default function Navbar() {
                     <div className="text-gray-500">Start typing to search officials</div>
                   ) : filteredOfficials.length > 0 ? (
                     filteredOfficials.slice(0, 5).map((official) => (
-                      <div
-                        key={official._id}
-                        className="p-2 hover:bg-gray-800 rounded-md cursor-pointer transition-colors"
-                      >
-                        <div className="font-medium">
-                          {official.firstName} {official.lastName}
-                        </div>
-                        <div className="text-xs text-gray-400">
-                          {official.position || "No position listed"}
-                          {official.agency ? ` • ${official.agency}` : ""}
-                        </div>
-                      </div>
+                      <NavCard onSelect={() => setDropdownOpen(false)} key={official._id} od={official}/>
                     ))
                   ) : (
                     <div className="text-gray-500">No results found</div>
