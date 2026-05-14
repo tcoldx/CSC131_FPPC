@@ -32,7 +32,7 @@ export interface Official {
     lastName: string;
     firstName: string;
     middleName?: string;
-    agency: string;
+    citySlug: string;
     position: string;
     email?: string;
     filingType: string;

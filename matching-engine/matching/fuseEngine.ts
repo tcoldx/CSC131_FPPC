@@ -4,10 +4,9 @@ import { AgendaItemEntry } from "../types/index";
 export function buildFuseIndex(agendaItems: AgendaItemEntry[]): Fuse<AgendaItemEntry> {
   return new Fuse(agendaItems, {
     keys: [
-      { name: "matterTitle", weight: 0.7 },
-      { name: "matterText",  weight: 0.3 },
+      { name: "matterTitle", weight: 1.0 }
     ],
-    threshold: 0.35,        // If score is above this, it's a match
+    threshold: 0.4,        // If score is above this, it's a match
     includeScore: true,
     includeMatches: true,   // Tell us what fields matched
   });
