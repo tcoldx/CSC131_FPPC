@@ -3,10 +3,9 @@
 import { useState, useEffect } from 'react';
 import { sendConflictAlert } from './emailNotification';
 
+// NOTE: Dummy data is used for demonstration purposes.
 const dummyConflicts = [
   { id: 'CON-1001', parties: 'Party A vs. Agency B', type: 'Financial Interest', date: '2025-05-01', severity: 'High' },
- // { id: 'CON-1002', parties: 'Contractor C vs. Dept. D', type: 'Prior Employment', date: '2025-05-03', severity: 'Medium' },
-  //{ id: 'CON-1003', parties: 'Vendor E vs. Division F', type: 'Family Relationship', date: '2025-05-04', severity: 'High' },
   { id: 'CON-1004', parties: 'Agency G vs. Supplier H', type: 'Financial Interest', date: '2025-05-05', severity: 'Low' },
   { id: 'CON-1005', parties: 'Officer I vs. Firm J', type: 'Prior Employment', date: '2025-05-06', severity: 'Medium' },
 ];
@@ -88,13 +87,13 @@ export default function EmailPage() {
         {/* Header */}
         <div className="mb-8">
           <h1 className="text-2xl font-semibold text-white">Email Notifications</h1>
-          <p className="text-gray-400 text-sm mt-1">Manage investigator emails and send automatic conflict alerts.</p>
+          <p className="text-gray-400 text-sm mt-1">Manage investigator emails and test conflict alerts.</p>
         </div>
 
         {/* Email Input Section */}
         <div className="bg-slate-900 border border-slate-700 rounded-xl p-6 mb-8">
           <h2 className="text-lg font-semibold text-white mb-1">Investigator Emails</h2>
-          <p className="text-gray-400 text-sm mb-4">Add emails below. They will be saved automatically and notified when a conflict is detected.</p>
+          <p className="text-gray-400 text-sm mb-4">Add investigator emails below. These are saved in the browser and can be used for conflict alert notifications.</p>
 
           <div className="flex gap-3 mb-2">
             <input
@@ -137,7 +136,7 @@ export default function EmailPage() {
 
         {/* Conflict Table */}
         <div className="bg-slate-900 border border-slate-700 rounded-xl p-6">
-          <h2 className="text-lg font-semibold text-white mb-4">Detected Conflicts</h2>
+          <h2 className="text-lg font-semibold text-white mb-4">Sample Conflict Alerts</h2>
           <div className="overflow-x-auto">
             <table className="w-full text-sm">
               <thead>

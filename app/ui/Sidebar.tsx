@@ -9,6 +9,7 @@ import {
   Users,
   Settings,
   Database,
+  Mail,
 } from "lucide-react";
 
 export default function Sidebar() {
@@ -60,6 +61,13 @@ export default function Sidebar() {
           >
             <Database className="w-5 h-5" />
             {open && <span>Data Sources</span>}
+          </Link>
+          <Link
+            href="/email"
+            className={` flex items-center gap-3 p-3 rounded-xl ${pathname === "/email" ? "border-blue-400 border text-blue-400 bg-blue-900/30" : "text-gray-400 hover:bg-slate-900 hover:text-gray-100 transition"}`}
+          >
+            <Mail className="w-5 h-5" />
+            {open && <span>Email Notifications</span>}
           </Link>
           <Link
             href="/settings"
